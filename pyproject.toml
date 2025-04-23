@@ -5,12 +5,22 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "accelerate>=1.6.0",
+    "numpy>=2.2.5",
     "openai-whisper>=20240930",
     "praat-parselmouth>=0.4.5",
+    "scipy>=1.15.2",
+    "torchaudio>=2.6.0",
     "transformers>=4.51.3",
 ]
 
 [dependency-groups]
 dev = [
+    "datasets>=3.5.0",
     "ipython>=9.1.0",
+    "librosa>=0.11.0",
+    "soundfile>=0.13.1",
 ]
+
+[tool.uv.sources]
+transformers = { git = "https://github.com/nyrahealth/transformers.git", rev = "crisper_whisper" }
