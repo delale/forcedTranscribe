@@ -1,0 +1,5 @@
+# Ignore caches
+.DS_Store
+
+# Ignore test folder
+test
