@@ -317,7 +317,7 @@ dependencies = [
     { name = "numpy" },
     { name = "openai-whisper" },
     { name = "praat-parselmouth" },
-    { name = "scipy" },
+    { name = "safetensors" },
     { name = "torchaudio" },
     { name = "transformers" },
 ]
@@ -336,7 +336,7 @@ requires-dist = [
     { name = "numpy", specifier = ">=2.2.5" },
     { name = "openai-whisper", specifier = ">=20240930" },
     { name = "praat-parselmouth", specifier = ">=0.4.5" },
-    { name = "scipy", specifier = ">=1.15.2" },
+    { name = "safetensors", specifier = ">=0.5.3" },
     { name = "torchaudio", specifier = ">=2.6.0" },
     { name = "transformers", git = "https://github.com/nyrahealth/transformers.git?rev=crisper_whisper" },
 ]
