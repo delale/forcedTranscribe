@@ -1,6 +1,52 @@
+"""General utilities."""
+
 import logging
+from typing_extensions import Tuple
+import numpy as np
+import torch
+import torchaudio
+import torchaudio.transforms as T
 import parselmouth
 from parselmouth import praat
+
+
+def load_audio(audio_path: str) -> Tuple[np.ndarray, float]:
+    """Loads and preprocess audio file.
+
+    Parameters
+    ----------
+    audio_path : str
+        Path to audio file.
+
+    Returns
+    -------
+    tuple
+        np.ndarray:
+            Audio waveform.
+        float
+            Audio duration in seconds.
+    """
+    y, sr = torchaudio.load(uri=audio_path, normalize=True).numpy()
+
+    # Check type
+    if not y.dtype == np.dtype("float32"):
+        y = y.astype(np.float32)
+
+    # Normalise
+    y_mean = np.mean(y)
+    y_std = np.std(y)
+    y_norm = (y - y_mean) / y_std
+
+    # Resample to 16000 Hz
+    resampler = T.Resample(sr, 16000)
+    waveform = resampler(
+        torch.unsqueeze(
+            torch.tensor(y_norm / 8),
+            0,
+        )
+    )
+
+    return waveform, len(y) / sr
 
 
 def textgrid_from_transcription(
