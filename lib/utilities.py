@@ -1,7 +1,7 @@
 """General utilities."""
 
 import logging
-from typing_extensions import Tuple
+from typing import Tuple
 import numpy as np
 import torch
 import torchaudio

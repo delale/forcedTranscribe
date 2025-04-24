@@ -1,4 +1,4 @@
-from typing_extensions import Union
+from typing import Union
 import torch
 import transformers
 from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
