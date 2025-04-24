@@ -1,5 +1,6 @@
 # Ignore caches
 .DS_Store
+__pycache__
 
 # Ignore test folder
 test
